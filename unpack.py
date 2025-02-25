@@ -3,12 +3,20 @@
 import os
 import sys
 
-file = sys.argv[1]
-output = sys.argv[2]
+def StartsWithGimHeader(file):
+    with open(file, "rb") as f:
+        header = f.read(11)
+        if header == gim_header:
+            return True
+        else:
+            return False
 
-if len(sys.argv) < 2:
+if len(sys.argv) != 3:
     print(f"Usage: {sys.argv[0]} <input_FILE> <output_DIRECTORY>")
     exit(1)
+
+file = sys.argv[1]
+output = sys.argv[2]
 
 gim_header = b"\x4D\x49\x47\x2E\x30\x30\x2E\x31\x50\x53\x50"
 gim_file_size = 131792
@@ -29,6 +37,15 @@ with open(file, "rb") as f:
         index += 1
 
 file_count = 0
+
+if not StartsWithGimHeader(file):
+    with open(file, "rb") as f:
+            content = f.read()[:occours_gim_header[0]]
+            with open(f"{output}/0.filler", "wb") as r:
+                r.write(content)
+                print(f"Header extraído!")
+    file_count += 1
+
 for i in occours_gim_header:
     with open(file, "rb") as f:
         content = f.read()[i:i + gim_file_size]
