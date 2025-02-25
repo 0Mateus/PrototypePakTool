@@ -11,5 +11,5 @@ python3 unpack.py <input_PAK> <output_DIRECTORY>
 
 Pack:
 ```sh
-$ python3 pack.py <input_DIRECTORY> <output_PAK>
+python3 pack.py <input_DIRECTORY> <output_PAK>
 ```
