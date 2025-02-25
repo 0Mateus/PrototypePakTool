@@ -2,7 +2,7 @@
 
 Tool created to extract .gim files from .pak archives inside Prototype PSP games.
 
-Tested on: AIR, Planetarian ~Chiisana Hoshi no Yume~
+Tested on: AIR, Planetarian \~Chiisana Hoshi no Yume\~
 
 Unpack:
 ```sh
